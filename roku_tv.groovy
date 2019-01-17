@@ -94,9 +94,9 @@ def parse(String description) {
 def on() {
   sendEvent(name: "switch", value: "on")
 
-  sendHubCommand(new physicalgraph.device.HubAction (
+  sendHubCommand(new hubitat.device.HubAction (
     "wake on lan ${deviceMac}",
-    physicalgraph.device.Protocol.LAN,
+    hubitat.device.Protocol.LAN,
     null,
     [:]
   ))
@@ -157,7 +157,7 @@ def refresh() {
 
 def queryDeviceState() {
   sendEvent(name: "switch", value: "off")
-  sendHubCommand(new physicalgraph.device.HubAction(
+  sendHubCommand(new hubitat.device.HubAction(
     method: "GET",
     path: "/query/device-info",
     headers: [ HOST: "${deviceIp}:8060" ]
@@ -166,7 +166,7 @@ def queryDeviceState() {
 
 def keypress(key) {
   log.debug "Executing '${key}'"
-  def result = new physicalgraph.device.HubAction(
+  def result = new hubitat.device.HubAction(
     method: "POST",
     path: "/keypress/${key}",
     headers: [ HOST: "${deviceIp}:8060" ],
@@ -175,7 +175,7 @@ def keypress(key) {
 
 def launchApp(appId) {
   log.debug "Executing 'launchApp ${appId}'"
-  def result = new physicalgraph.device.HubAction(
+  def result = new hubitat.device.HubAction(
     method: "POST",
     path: "/launch/${appId}",
     headers: [ HOST: "${deviceIp}:8060" ],

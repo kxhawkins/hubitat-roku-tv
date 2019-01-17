@@ -80,7 +80,7 @@ def installed() {
 def updated() {
   log.debug "updated"
   poll()
-  runEvery1Minute(poll)
+  runEvery5Minutes(poll)
 }
 
 def parse(String description) {

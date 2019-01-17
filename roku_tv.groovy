@@ -11,8 +11,6 @@ metadata {
     command "volume_up"
     command "volume_down"
     command "volume_mute"
-    command "nickjr"
-    command "disneyjr"
     command "hdmi1"
     command "hdmi2"
     command "hdmi3"
@@ -44,14 +42,6 @@ metadata {
       state "default", label:"Mute", action:"volume_mute", icon:"st.custom.sonos.muted"
     }
 
-    standardTile("nickjr", "device.switch", inactiveLabel: false, decoration: "flat") {
-      state "default", label:"Nick Jr.", action:"nickjr", icon:"st.Electronics.electronics12"
-    }
-
-    standardTile("disneyjr", "device.switch", inactiveLabel: false, decoration: "flat") {
-      state "default", label:"Disney Jr.", action:"disneyjr", icon:"st.Electronics.electronics12"
-    }
-
     standardTile("hdmi1", "device.switch", inactiveLabel: false, decoration: "flat") {
       state "default", label:"HDMI 1", action:"hdmi1", icon:"st.Electronics.electronics12"
     }
@@ -69,7 +59,7 @@ metadata {
     }
 
     main "button"
-    details(["button", "refresh", "volume_mute", "volume_down", "volume_up", "hdmi1", "hdmi2", "hdmi3", "hdmi4", "nickjr", "disneyjr"])
+    details(["button", "refresh", "volume_mute", "volume_down", "volume_up", "hdmi1", "hdmi2", "hdmi3", "hdmi4"])
   }
 }
 
@@ -119,14 +109,6 @@ def volume_down() {
 
 def volume_mute() {
   keypress('VolumeMute')
-}
-
-def nickjr() {
-  launchApp('66595')
-}
-
-def disneyjr() {
-  launchApp('34278')
 }
 
 def hdmi1() {

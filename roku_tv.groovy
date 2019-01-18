@@ -1,6 +1,6 @@
 preferences {
-    input("deviceIp", "text", title: "Device IP")
-    input("deviceMac", "text", title: "Device MAC Address")
+	input "deviceIp", "text", title: "Device IP", required: true
+	input "deviceMac", "text", title: "Device MAC Address", required: true
 }
 
 metadata {

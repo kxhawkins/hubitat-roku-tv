@@ -76,8 +76,12 @@ def updated() {
 def parse(String description) {
   def msg = parseLanMessage(description)
 
-  if (msg.body && msg.body.contains("PowerOn")) {
+  if (msg.body && msg.body.contains("PowerOn") && this.state!="on") {
     sendEvent(name: "switch", value: "on")
+  }
+
+  if (msg.body && msg.body.contains("PowerOff") && this.state!="off") {
+    sendEvent(name: "switch", value: "off")
   }
 }
 
@@ -138,7 +142,6 @@ def refresh() {
 }
 
 def queryDeviceState() {
-  sendEvent(name: "switch", value: "off")
   sendHubCommand(new hubitat.device.HubAction(
     method: "GET",
     path: "/query/device-info",
